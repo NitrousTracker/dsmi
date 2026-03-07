@@ -2,6 +2,9 @@
 #include <nds.h>
 
 #include <dswifi9.h>
+#ifdef __BLOCKSDS__
+#include <sys/ioctl.h>
+#endif
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
