@@ -160,7 +160,11 @@ void dsmi_timer_50ms(void) {
 // beacon.
 bool dsmi_wifi_init(void) {
 #ifdef __BLOCKSDS__
-    return Wifi_InitDefault(WFC_CONNECT | WIFI_ATTEMPT_DSI_MODE);
+    if (!Wifi_InitDefault(WFC_CONNECT | WIFI_ATTEMPT_DSI_MODE))
+        return false;
+
+    Wifi_EnableWifi();
+    return true;
 #else
     if (!Wifi_InitDefault(true))
         return false;
@@ -172,10 +176,7 @@ bool dsmi_wifi_init(void) {
 
 int dsmi_connect_wifi(void)
 {
-    Wifi_EnableWifi();
-
 	if(!dsmi_wifi_init()) {
-        Wifi_DisableWifi();
 		return 0;
 	}
 	
