@@ -106,8 +106,6 @@ extern int dsmi_osc_send(void);
 
 // ------------ READ ------------ //
 
-extern void dsmi_set_read_callback(void (*onData_)(u8 message, u8 data1, u8 data2));
-
 // Checks if a new message arrived at the default interface and returns it by
 // filling the given pointers
 //
